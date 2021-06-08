@@ -18,8 +18,8 @@ const LoginComponent = ({ form, errors, onChange, onSubmit }) => {
         style={styles.logoImage}
       />
       <View>
-        <Text style={styles.title}>Welcome to Ping Me!</Text>
-        <Text style={styles.subTitle}>Sign Up</Text>
+        <Text style={styles.title}>Welcome back to Ping Me!</Text>
+        <Text style={styles.subTitle}>Sign In</Text>
         <View style={styles.form}>
           <Input
             onChangeText={value => onChange({ name: 'email', value })}
