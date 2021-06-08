@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Text } from 'react-native';
 import Container from '../../components/common/Container';
 import Input from '../../components/common/Input';
+import CustomButton from '../../components/common/CustomButton';
 
 const Login = () => {
   const [userName, onUserNameChange] = useState('');
@@ -25,6 +26,12 @@ const Login = () => {
         iconPosition="right"
         hideText={hidePwd}
         setHideText={setHidePwd}
+      />
+      <CustomButton
+        title="Submit"
+        loading={false}
+        disabled={true}
+        variant={'primary'}
       />
     </Container>
   );

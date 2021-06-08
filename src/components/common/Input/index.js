@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { color } from 'react-native-reanimated';
 import colors from '../../../assets/theme/colors';
 import styles from './styles';
 
