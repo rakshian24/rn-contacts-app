@@ -6,6 +6,7 @@ import Input from '../../components/common/Input';
 const Login = () => {
   const [userName, onUserNameChange] = useState('');
   const [password, onPasswordChange] = useState('');
+  const [hidePwd, setHidePwd] = useState(true);
 
   return (
     <Container>
@@ -20,8 +21,10 @@ const Login = () => {
         onChangeText={text => onPasswordChange(text)}
         value={password}
         label="Password"
-        icon={<Text>HIDE</Text>}
+        icon={<Text>{hidePwd ? 'SHOW' : 'HIDE'}</Text>}
         iconPosition="right"
+        hideText={hidePwd}
+        setHideText={setHidePwd}
       />
     </Container>
   );

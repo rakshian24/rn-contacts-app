@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, TextInput, View } from 'react-native';
+import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { color } from 'react-native-reanimated';
 import colors from '../../../assets/theme/colors';
 import styles from './styles';
@@ -12,6 +12,8 @@ const Input = ({
   icon,
   iconPosition,
   error,
+  hideText,
+  setHideText,
   ...props
 }) => {
   const [focussed, setFocussed] = useState(false);
@@ -51,7 +53,9 @@ const Input = ({
           },
         ]}
       >
-        <View style={styles.icon}>{icon && icon}</View>
+        <TouchableOpacity onPress={() => setHideText(!hideText)}>
+          <View style={styles.icon}>{icon && icon}</View>
+        </TouchableOpacity>
 
         <TextInput
           style={[styles.textInput, style]}
@@ -59,6 +63,7 @@ const Input = ({
           value={value}
           onFocus={() => setFocussed(true)}
           onBlur={() => setFocussed(false)}
+          secureTextEntry={hideText}
           {...props}
         />
       </View>
