@@ -4,11 +4,11 @@ import Input from '../Input';
 import CustomButton from '../CustomButton';
 import { Image, View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
-import { SIGN_UP } from '../../../constants/routeNames';
+import { LOGIN } from '../../../constants/routeNames';
 import { useNavigation } from '@react-navigation/native';
 
-const LoginComponent = ({ form, errors, onChange, onSubmit }) => {
-  const { email, password } = form;
+const SignUpComponent = ({ form, errors, onChange, onSubmit }) => {
+  const { userName, firstName, lastName, email, password } = form;
   const { navigate } = useNavigation();
   return (
     <Container>
@@ -20,6 +20,25 @@ const LoginComponent = ({ form, errors, onChange, onSubmit }) => {
         <Text style={styles.title}>Welcome to Ping Me!</Text>
         <Text style={styles.subTitle}>Sign Up</Text>
         <View style={styles.form}>
+          <Input
+            onChangeText={value => onChange({ name: 'userName', value })}
+            label="User Name"
+            placeholder={'Enter User Name'}
+            error={errors.userName}
+          />
+          <Input
+            onChangeText={value => onChange({ name: 'firstName', value })}
+            label="First Name"
+            placeholder={'Enter First Name'}
+            error={errors.firstName}
+          />
+          <Input
+            onChangeText={value => onChange({ name: 'lastName', value })}
+            label="Last Name"
+            placeholder={'Enter Last Name'}
+            error={errors.lastName}
+          />
+
           <Input
             onChangeText={value => onChange({ name: 'email', value })}
             label="Email"
@@ -40,18 +59,20 @@ const LoginComponent = ({ form, errors, onChange, onSubmit }) => {
           <CustomButton
             title="Submit"
             loading={false}
-            disabled={!email || !password}
+            disabled={
+              !userName || !firstName || !lastName || !email || !password
+            }
             variant={'primary'}
             onPress={onSubmit}
           />
         </View>
         <View style={styles.footer}>
           <View>
-            <Text style={styles.footerText}>New to Ping Me? </Text>
+            <Text style={styles.footerText}>Already have an account? </Text>
           </View>
           <View>
-            <TouchableOpacity onPress={() => navigate(SIGN_UP)}>
-              <Text style={styles.footerLinkText}>Sign Up here</Text>
+            <TouchableOpacity onPress={() => navigate(LOGIN)}>
+              <Text style={styles.footerLinkText}>Login here</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -60,4 +81,4 @@ const LoginComponent = ({ form, errors, onChange, onSubmit }) => {
   );
 };
 
-export default LoginComponent;
+export default SignUpComponent;
