@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from '../Container';
 import Input from '../Input';
 import CustomButton from '../CustomButton';
@@ -10,6 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 const SignUpComponent = ({ form, errors, onChange, onSubmit }) => {
   const { userName, firstName, lastName, email, password } = form;
   const { navigate } = useNavigation();
+  const [hidePwd, setHidePwd] = useState(true);
   return (
     <Container>
       <Image
@@ -50,10 +51,10 @@ const SignUpComponent = ({ form, errors, onChange, onSubmit }) => {
             onChangeText={value => onChange({ name: 'password', value })}
             label="Password"
             placeholder={'Enter Password'}
-            // icon={<Text>{hidePwd ? 'SHOW' : 'HIDE'}</Text>}
+            icon={<Text>{hidePwd ? 'SHOW' : 'HIDE'}</Text>}
             iconPosition="right"
-            // hideText={hidePwd}
-            // setHideText={setHidePwd}
+            hideText={hidePwd}
+            setHideText={setHidePwd}
             error={errors.password}
           />
           <CustomButton
